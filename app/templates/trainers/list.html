@@ -1,0 +1,21 @@
+{% extends "layouts/default.html" %}
+{% import "scaffolding/macros.html" as scaffold with context %}
+
+{% block layout_content %}
+    {% for trainer in trainers %}
+    <div class="media">
+        <div class="media-body">
+            <h4 class="media-heading">{{trainer.firstName}} {{trainer.lastName}}</h4>
+            <h6 class="media-heading">{{scaffold.print(trainer.email)}}</h6>
+            <p>{{trainer.bio}}</p>
+        </div>
+    </div>
+
+    {% endfor %}
+
+    <div ng-controller="ctrlOne">
+    <li ng-repeat="trainer in trainers.items">
+    {%raw%}{{trainer.firstName}}{%endraw%} {%raw%}{{trainer.lastName}}{%endraw%}
+    </li>
+    </div>
+{% endblock %}

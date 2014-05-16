@@ -1,0 +1,17 @@
+{% extends "layouts/default.html" %}
+{% import "scaffolding/macros.html" as scaffold with context %}
+
+{% block layout_content %}
+    {% for post in posts %}
+    <div class="media">
+        <div class="media-body">
+            <h4 class="media-heading">{{post.title}}</h4>
+            <h6 class="media-heading">By {{post.created_by}} on {{scaffold.print(post.created)}}</h6>
+            <p>{{post.content}}</p>
+        </div>
+        {% if this.user == post.created_by %}
+            <a href="{{uri('posts:edit', key=post.key.urlsafe())}}">Edit</a>
+        {% endif %}
+    </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,2 @@
+import inflection
+inflector = inflection
